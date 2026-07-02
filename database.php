@@ -2,7 +2,7 @@
 function oDBConn() {
 	$DBhost = "localhost";
 	$DBuser = "a.favaron";
-	$DBpass = "a.favaron407";  // INSERIRE LA VOSTRA PASSWORD
+	$DBpass = "a.favaron407";  
 	$DBName = "a.favaron";
 //echo ("CONN: \".$DBhost.\", \".$DBuser.\", \".$DBName);
 //echo "DB-Username:$DBuser - Password:$DBpass <BR/><BR/>";
