@@ -1,0 +1,33 @@
+
+body{
+	background-color:#D9D5CC;
+	}
+ .box-login{
+      width:320px;
+      background:#1d4ed8;           /* blu diverso */
+      color:#D9D5CC;
+      padding:20px;
+      border-radius:10px;
+      margin:120px auto;            /* centrato orizzontalmente */
+    }
+
+    .box-login input{
+      width:100%;
+      padding:10px;
+      margin:6px 0 12px;
+      box-sizing:border-box;
+    }
+.dx{
+	border-radius: 50%;
+	float: right;
+	margin: 10px; /* spazio intorno all'immagine */
+}
+form{
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;	
+}
