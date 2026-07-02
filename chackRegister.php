@@ -1,7 +1,5 @@
 <?php
-// =============================================
-// REGISTRAZIONE UTENTE - VERSIONE SEMPLIFICATA
-// =============================================
+
 
 // Avvia la sessione per poter usare variabili di sessione più avanti
 session_start();
@@ -16,9 +14,7 @@ include_once "database.php";
 // oDBConn() è una funzione che restituisce la connessione al database
 $oDBConn = oDBConn();
 
-// =============================================
-// 1. RACCOLTA DATI DAL FORM
-// =============================================
+
 
 // $_POST contiene i dati inviati dal form di registrazione
 $username = $_POST["user"];           // Nome utente scelto
@@ -47,36 +43,34 @@ if ($password != $confermapassword) {
 $checkSql = "SELECT * FROM TB_UTENTI WHERE utente = ?";
 $checkStmt = $oDBConn->prepare($checkSql);
 
-// Sostituisco il ? con il valore di $username
-$checkStmt->bind_param("s", $username);  // "s" significa stringa
 
-// Eseguo la ricerca nel database
+$checkStmt->bind_param("s", $username);  
+
 $checkStmt->execute();
 
-// Prendo i risultati della ricerca
+
 $risultato = $checkStmt->get_result();
 
-//se il riuslta > 0 significa utente già esistente 
+
 if ($risultato->num_rows > 0) {
     echo "<h3>Errore: lo username '" . $username . "' è già registrato.</h3>";
     die();
 }
 
-// chiusura statement della ricerca 
+
 $checkStmt->close();
 
 
-// Di default, nessuna foto profilo
+
 $foto_profilo = null;
 
-// Controllo se l'utente ha caricato un file
-// $_FILES contiene i file inviati dal form
+
 if (isset($_FILES['foto']) && $_FILES['foto']['error'] === 0) {
     
     // Nome della cartella dove salvare le foto
     $cartella = "uploads/";
     
-    // Se la cartella non esiste, provo a crearla
+
     if (!is_dir($cartella)) {
         // mkdir = make directory (crea cartella)
         // 0777 sono i permessi ( leggere/scrivere)
